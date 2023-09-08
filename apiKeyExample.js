@@ -1,0 +1,1 @@
+const apiKey = 'EXAMPLE_KEY';
