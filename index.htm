@@ -2,16 +2,21 @@
 <html>
     <head>
         <title>Weather App</title>
-        <link rel="stylesheet" href="weatherApp.css">
+        <link rel="stylesheet" href="css/weatherApp.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     </head>
     <body>
-        <h1 id="appTitle">Weather App</h1>
+        <h1>Weather App</h1>
         <form id="weatherForm">
             <p id="locationText">Location: </p><input id="locationInput" type="text">
             <input id="submit" type="submit" value="Submit">
         </form>
-        <script src="apiKey.js"></script>
-        <script src="weatherApp.js"></script>
+        <script src="js/apiKey.js"></script>
+        <script src="js/weatherApp.js"></script>
+        <div id="cityContainer">
+            <ul id="cities">
+            </ul>
+        </div>
+        
     </body>
 </html>
