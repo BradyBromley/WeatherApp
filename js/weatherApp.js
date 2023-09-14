@@ -20,7 +20,19 @@ form.addEventListener('submit', (event) => {
             
             // Add the location to the list if it has not been added already
             if (!$("#" + id.replace( /(\.)/g, "\\$1" )).length) {
-                $('#cities').append('<li class="city" id="' + id + '">' + response['location']['name'] + '</li>');
+                $('#repeatCityMessage').hide();
+
+                currentCityHtml = '<li class="city" id="' + id + '">';
+                currentCityHtml += '<p class="cityName">' + response['location']['name'] + '</p>';
+                currentCityHtml += '<p class="regionName">' + response['location']['region'] + '</p>';
+                currentCityHtml += '<p class="temperature">' + response['current']['temp_c'] + '°C' + '</p>';
+                currentCityHtml += '<img class="conditionImg" src="https://' + response['current']['condition']['icon'] + '">';
+                currentCityHtml += '<p class="conditionText">' + response['current']['condition']['text'] + '</p>';
+                currentCityHtml += '</li>';
+                $('#cities').append(currentCityHtml);
+                
+            } else {
+                $('#repeatCityMessage').show();
             }
 
         },

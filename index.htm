@@ -8,12 +8,13 @@
     <body>
         <h1>Weather App</h1>
         <form id="weatherForm">
-            <p id="locationText">Location: </p><input id="locationInput" type="text">
-            <input id="submit" type="submit" value="Submit">
+            <input id="locationInput" type="text" placeholder="Search for a city">
+            <div><input id="locationSubmit" type="submit" value="Submit"></div>
         </form>
         <script src="js/apiKey.js"></script>
         <script src="js/weatherApp.js"></script>
         <div id="cityContainer">
+            <p id="repeatCityMessage" hidden>You have already searched for that city, add the state/province if you are looking for another city with the same name.</p>
             <ul id="cities">
             </ul>
         </div>
