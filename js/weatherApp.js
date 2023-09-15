@@ -28,6 +28,7 @@ form.addEventListener('submit', (event) => {
                 currentCityHtml += '<p class="temperature">' + response['current']['temp_c'] + '°C' + '</p>';
                 currentCityHtml += '<img class="conditionImg" src="https://' + response['current']['condition']['icon'] + '">';
                 currentCityHtml += '<p class="conditionText">' + response['current']['condition']['text'] + '</p>';
+                currentCityHtml += '<button class="deleteButton" onclick="deleteLocation(this)">Delete</button>';
                 currentCityHtml += '</li>';
                 $('#cities').append(currentCityHtml);
                 
@@ -38,7 +39,12 @@ form.addEventListener('submit', (event) => {
         },
         error: function(xhr, status, error) {
             // Handle Errors
-            $('#result').text('ERROR');
+            alert('Something went wrong. Try refreshing the page.');
         }
     });
 });
+
+
+function deleteLocation(elem) {
+    document.getElementById(elem.parentNode.id).remove();
+}
