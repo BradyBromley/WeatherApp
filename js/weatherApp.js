@@ -7,7 +7,7 @@ form.addEventListener('submit', (event) => {
     const locationInput = form.elements['locationInput'];
     let location = locationInput.value;
     $.ajax({
-        url: 'https://weatherapi-com.p.rapidapi.com/current.json?q=' + location,
+        url: 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=' + location + '&days=3',
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': apiKey,
@@ -22,12 +22,39 @@ form.addEventListener('submit', (event) => {
             if (!$("#" + id.replace( /(\.)/g, "\\$1" )).length) {
                 $('#repeatCityMessage').hide();
 
+                let location = response['location'];
+                let current = response['current'];
+
                 currentCityHtml = '<li class="city" id="' + id + '">';
-                currentCityHtml += '<p class="cityName">' + response['location']['name'] + '</p>';
-                currentCityHtml += '<p class="regionName">' + response['location']['region'] + '</p>';
-                currentCityHtml += '<p class="temperature">' + response['current']['temp_c'] + '°C' + '</p>';
-                currentCityHtml += '<img class="conditionImg" src="https://' + response['current']['condition']['icon'] + '">';
-                currentCityHtml += '<p class="conditionText">' + response['current']['condition']['text'] + '</p>';
+
+                currentWeatherHtml = '<div class="currentWeather">';
+                currentWeatherHtml += '<p class="cityName">' + location['name'] + '</p>';
+                currentWeatherHtml += '<p class="regionName">' + location['region'] + '</p>';
+                currentWeatherHtml += '<p class="temperature">' + current['temp_c'] + '°C</p>';
+                currentWeatherHtml += '<img class="conditionImg" src="https://' + current['condition']['icon'] + '">';
+                currentWeatherHtml += '<p class="conditionText">' + current['condition']['text'] + '</p>';
+                currentWeatherHtml += '</div>';
+
+                let forecast = response['forecast']['forecastday'];
+
+                hourlyForecastHtml = '<div id="hourlyForecast">';
+                hourlyForecastHtml += '<p id="hourlyForecastTitle">Hourly Forecast</p>'
+                hourlyForecastHtml += '<div id="hourlyForecastData">';
+                for (let i = 0; i < 24; i++) {
+                    // Multiply by 1000 because Date takes epoch in terms of milliseconds
+                    let date = new Date(forecast[0]['hour'][i]['time_epoch'] * 1000);
+                    let time = date.getHours() + ':00';
+                    hourHtml = '<div class="hourObject">';
+                    hourHtml += '<p class="hour">' + time + '</p>';
+                    hourHtml += '<img class="hourlyForecastImg" src="https://' + forecast[0]['hour'][i]['condition']['icon']  + '">';
+                    hourHtml += '<p class="hourlyTemperature">' + forecast[0]['hour'][i]['temp_c'] + '°C</p>';
+                    hourHtml += '</div>';
+
+                    hourlyForecastHtml += hourHtml;
+                }
+                hourlyForecastHtml += '</div></div>';
+
+                currentCityHtml += currentWeatherHtml + hourlyForecastHtml;
                 currentCityHtml += '<button class="deleteButton" onclick="deleteLocation(this)">Delete</button>';
                 currentCityHtml += '</li>';
                 $('#cities').append(currentCityHtml);
@@ -38,7 +65,7 @@ form.addEventListener('submit', (event) => {
 
         },
         error: function(xhr, status, error) {
-            // Handle Errors
+            // Handle errors for the weather api
             alert('Something went wrong. Try refreshing the page.');
         }
     });

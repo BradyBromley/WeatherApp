@@ -1,3 +1,4 @@
+/* General app css */
 body {
     background-color: steelblue;
 }
@@ -85,11 +86,12 @@ ul#cities {
     }
 }
 
+/* City css */
 .city {
     display: inline-block;
     position: relative;
-    background-color: aliceblue;
-    height: 300px;
+    background-color:rgb(207, 233, 255);
+    height: 500px;
     width: 220px;
     margin: 10px;
     border: 3px;
@@ -119,9 +121,10 @@ ul#cities {
 
 .conditionImg {
     display: block;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    
 }
 
 .conditionText {
@@ -130,6 +133,53 @@ ul#cities {
     margin: 2px;
 }
 
+
+/* Hourly forecast css */
+#hourlyForecast {
+    background-color:aliceblue;
+    border-radius: 10px;
+}
+
+#hourlyForecastTitle {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+#hourlyForecastData {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin: 5px;
+}
+
+.hourObject {
+    display: inline-block;
+    height: 64px;
+    width: 64px;
+}
+
+.hour {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+}
+
+.hourlyForecastImg {
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hourlyTemperature {
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+
+}
+
+/* Delete button css */
 .deleteButton {
     position: absolute;
     bottom: 0;
