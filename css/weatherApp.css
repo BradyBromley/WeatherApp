@@ -86,16 +86,21 @@ ul#cities {
     }
 }
 
+
 /* City css */
 .city {
     display: inline-block;
     position: relative;
     background-color:rgb(207, 233, 255);
-    height: 500px;
+    height: 550px;
     width: 220px;
     margin: 10px;
     border: 3px;
     border-radius: 15px;
+}
+
+.currentWeather {
+    margin-bottom: 5px;
 }
 
 .cityName {
@@ -138,6 +143,7 @@ ul#cities {
 #hourlyForecast {
     background-color:aliceblue;
     border-radius: 10px;
+    margin-bottom: 5px;
 }
 
 #hourlyForecastTitle {
@@ -150,7 +156,7 @@ ul#cities {
 #hourlyForecastData {
     overflow-x: auto;
     white-space: nowrap;
-    margin: 5px;
+    padding: 5px;
 }
 
 .hourObject {
@@ -178,6 +184,48 @@ ul#cities {
     margin: 0;
 
 }
+
+
+/* Three day forecast css */
+#threeDayForecast {
+    background-color:aliceblue;
+    border-radius: 10px;
+}
+
+#threeDayForecastTitle {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+}
+
+#threeDayForecastData {
+    padding: 5px;
+}
+
+.dayObject {
+    height: 32px;
+}
+
+.dayText {
+    float: left;
+    height: 12px;
+    width: 32px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.threeDayForecastImg {
+    float: left;
+    width: 32px;
+    height: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
 
 /* Delete button css */
 .deleteButton {

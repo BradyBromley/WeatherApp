@@ -38,7 +38,7 @@ form.addEventListener('submit', (event) => {
                 let forecast = response['forecast']['forecastday'];
 
                 hourlyForecastHtml = '<div id="hourlyForecast">';
-                hourlyForecastHtml += '<p id="hourlyForecastTitle">Hourly Forecast</p>'
+                hourlyForecastHtml += '<p id="hourlyForecastTitle">Hourly Forecast</p>';
                 hourlyForecastHtml += '<div id="hourlyForecastData">';
                 for (let i = 0; i < 24; i++) {
                     // Multiply by 1000 because Date takes epoch in terms of milliseconds
@@ -54,7 +54,25 @@ form.addEventListener('submit', (event) => {
                 }
                 hourlyForecastHtml += '</div></div>';
 
-                currentCityHtml += currentWeatherHtml + hourlyForecastHtml;
+                let daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+                threeDayForecastHtml = '<div id="threeDayForecast">';
+                threeDayForecastHtml += '<p id="threeDayForecastTitle">Three Day Forecast</p>';
+                threeDayForecastHtml += '<div id="threeDayForecastData">';
+                for (let i = 0; i < 3; i++) {
+                    let date = new Date(forecast[i]['hour'][0]['time_epoch'] * 1000);
+                    let readableDay = daysOfTheWeek[date.getDay()];
+                    dayHtml = '<div class="dayObject">';
+                    dayHtml += '<div class="dayText">' + readableDay + '</div>';
+                    dayHtml += '<img class="threeDayForecastImg" src="https://' + forecast[i]['day']['condition']['icon']  + '">';
+                    dayHtml += '<div class="dayText"><b>' + forecast[i]['day']['maxtemp_c'] + '°C</b>/' + forecast[i]['day']['mintemp_c'] + '°C</div>';
+                    dayHtml += '</div>';
+
+                    threeDayForecastHtml += dayHtml;
+                }
+                threeDayForecastHtml += '</div></div>';
+
+                currentCityHtml += currentWeatherHtml + hourlyForecastHtml + threeDayForecastHtml;
                 currentCityHtml += '<button class="deleteButton" onclick="deleteLocation(this)">Delete</button>';
                 currentCityHtml += '</li>';
                 $('#cities').append(currentCityHtml);
