@@ -7,3 +7,4 @@ For example, if "Vancouver" is submitted, then the weather forecast for "Vancouv
 
 The weather forecast for a location will show the current temperature and the current weather state (sunny, light rain, fog, etc.), as well as an hourly forecast and a three day forecast. The instance for a location can also be deleted so that it won't clutter up the page.
 
+![Screenshot](images/weatherApp.png)
