@@ -27,6 +27,7 @@ form.addEventListener('submit', (event) => {
 
                 currentCityHtml = '<li class="city" id="' + id + '">';
 
+                // Add html for the current location and weather
                 currentWeatherHtml = '<div class="currentWeather">';
                 currentWeatherHtml += '<p class="cityName">' + location['name'] + '</p>';
                 currentWeatherHtml += '<p class="regionName">' + location['region'] + '</p>';
@@ -37,13 +38,12 @@ form.addEventListener('submit', (event) => {
 
                 let forecast = response['forecast']['forecastday'];
 
+                // Add html for the hourly forecast
                 hourlyForecastHtml = '<div id="hourlyForecast">';
                 hourlyForecastHtml += '<p id="hourlyForecastTitle">Hourly Forecast</p>';
                 hourlyForecastHtml += '<div id="hourlyForecastData">';
                 for (let i = 0; i < 24; i++) {
-                    // Multiply by 1000 because Date takes epoch in terms of milliseconds
-                    let date = new Date(forecast[0]['hour'][i]['time_epoch'] * 1000);
-                    let time = date.getHours() + ':00';
+                    let time = i + ':00';
                     hourHtml = '<div class="hourObject">';
                     hourHtml += '<p class="hour">' + time + '</p>';
                     hourHtml += '<img class="hourlyForecastImg" src="https://' + forecast[0]['hour'][i]['condition']['icon']  + '">';
@@ -56,12 +56,14 @@ form.addEventListener('submit', (event) => {
 
                 let daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
+                // Add html for daily forecast (3 days)
                 threeDayForecastHtml = '<div id="threeDayForecast">';
                 threeDayForecastHtml += '<p id="threeDayForecastTitle">Three Day Forecast</p>';
                 threeDayForecastHtml += '<div id="threeDayForecastData">';
                 for (let i = 0; i < 3; i++) {
-                    let date = new Date(forecast[i]['hour'][0]['time_epoch'] * 1000);
-                    let readableDay = daysOfTheWeek[date.getDay()];
+                    // Multiply by 1000 because Date takes epoch in terms of milliseconds
+                    let date = new Date(forecast[i]['date']);
+                    let readableDay = daysOfTheWeek[date.getUTCDay()];
                     dayHtml = '<div class="dayObject">';
                     dayHtml += '<div class="dayText">' + readableDay + '</div>';
                     dayHtml += '<div class="weatherImage"><img class="threeDayForecastImg" src="https://' + forecast[i]['day']['condition']['icon']  + '"></div>';
