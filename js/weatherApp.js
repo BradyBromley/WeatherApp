@@ -64,8 +64,8 @@ form.addEventListener('submit', (event) => {
                     let readableDay = daysOfTheWeek[date.getDay()];
                     dayHtml = '<div class="dayObject">';
                     dayHtml += '<div class="dayText">' + readableDay + '</div>';
-                    dayHtml += '<img class="threeDayForecastImg" src="https://' + forecast[i]['day']['condition']['icon']  + '">';
-                    dayHtml += '<div class="dayText"><b>' + forecast[i]['day']['maxtemp_c'] + '°C</b>/' + forecast[i]['day']['mintemp_c'] + '°C</div>';
+                    dayHtml += '<div class="weatherImage"><img class="threeDayForecastImg" src="https://' + forecast[i]['day']['condition']['icon']  + '"></div>';
+                    dayHtml += '<div class="rangeText">' + forecast[i]['day']['mintemp_c'] + '°C to ' + forecast[i]['day']['maxtemp_c'] + '°C</div>';
                     dayHtml += '</div>';
 
                     threeDayForecastHtml += dayHtml;

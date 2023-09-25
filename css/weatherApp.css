@@ -1,6 +1,6 @@
 /* General app css */
 body {
-    background-color: steelblue;
+    background-color: rgb(44, 91, 129);
 }
 
 h1 {
@@ -11,14 +11,11 @@ h1 {
 
 #locationInput {
     display: block;
-    background-color: steelblue;
+    background-color: rgb(44, 91, 129);
     color: aliceblue;
     width: 80%;
     font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 10px auto;
     border: none;
     outline: none;
     border-bottom: 1px aliceblue solid;
@@ -31,16 +28,13 @@ h1 {
     height: 50px;
     width: 80%;
     font-size: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 10px auto;
     border: none;
     border-radius: 15px;
 }
 
 #locationSubmit:hover {
-    background-color: steelblue;
+    background-color: rgb(44, 91, 129);
     border: 3px solid;
     border-color: aliceblue;
     color: aliceblue;
@@ -49,20 +43,14 @@ h1 {
 #repeatCityMessage {
     color: aliceblue;
     width: 80%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 10px auto;
 }
 
 ul#cities {
     list-style: none;
     width: 960px;
     padding: 0;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10px auto 10px auto;
 }
 
 @media screen and (max-width: 992px) {
@@ -106,10 +94,7 @@ ul#cities {
 .cityName {
     font-size: 20px;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin: 10px 5px 5px 5px;
 }
 
 .regionName {
@@ -127,8 +112,7 @@ ul#cities {
 .conditionImg {
     display: block;
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0px auto 0px auto;
     
 }
 
@@ -141,9 +125,9 @@ ul#cities {
 
 /* Hourly forecast css */
 #hourlyForecast {
-    background-color:aliceblue;
+    background-color:rgb(144, 203, 255);
     border-radius: 10px;
-    margin-bottom: 5px;
+    margin: 0px 0px 5px 0px;
 }
 
 #hourlyForecastTitle {
@@ -173,9 +157,9 @@ ul#cities {
 
 .hourlyForecastImg {
     display: block;
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 48px;
+    width: 48px;
+    margin: 0px auto 0px auto;
 }
 
 .hourlyTemperature {
@@ -188,7 +172,7 @@ ul#cities {
 
 /* Three day forecast css */
 #threeDayForecast {
-    background-color:aliceblue;
+    background-color:rgb(144, 203, 255);
     border-radius: 10px;
 }
 
@@ -214,16 +198,22 @@ ul#cities {
     font-size: 12px;
     text-align: center;
     margin: 0;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+.rangeText {
+    float: left;
+    height: 12px;
+    font-size: 12px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 10px 10px 10px;
 }
 
 .threeDayForecastImg {
     float: left;
     width: 32px;
     height: 32px;
-    padding-left: 16px;
-    padding-right: 16px;
 }
 
 
@@ -231,8 +221,8 @@ ul#cities {
 .deleteButton {
     position: absolute;
     bottom: 0;
-    background-color: orangered;
-    height: 40px;
+    background-color: rgb(255, 123, 0);
+    height: 30px;
     width: 100%;
     font-size: 20px;
     text-align: center;
@@ -244,7 +234,7 @@ ul#cities {
 .deleteButton:hover {
     background-color: aliceblue;
     border: 3px solid;
-    border-color: orangered;
-    color: orangered;
+    border-color: rgb(255, 123, 0);
+    color: rgb(255, 123, 0);
     
 }
